@@ -1,0 +1,25 @@
+<div class="container">
+
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="nav navbar-nav">
+      <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="fa fa-home"></i> Players List
+      </a>
+      <a routerLink="/stat" class="nav-item nav-link" routerLinkActive="active">
+        <i class="fa fa-info-circle"></i> Stat
+      </a>
+      <a routerLink="/badge" class="nav-item nav-link" routerLinkActive="active">
+        <i class="fa fa-info-circle"></i> Badge
+      </a>
+      <a routerLink="/note" class="nav-item nav-link" routerLinkActive="active">
+        <i class="fa fa-info-circle"></i> Note
+      </a>
+      <a routerLink="/about" class="nav-item nav-link" routerLinkActive="active">
+        <i class="fa fa-info-circle"></i> About
+      </a>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</div>
