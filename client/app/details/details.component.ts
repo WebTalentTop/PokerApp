@@ -19,11 +19,15 @@ export class DetailsComponent implements OnInit {
   curBadges = []; 
   avBadges = [];
   isLoading = true;
+  isAddBadges = false;
+  isAddNote = false;
+  btnBadgeCaption = "Add New Badge";
+  btnNoteCaption = "Add New Note";
   cat = <any>{};
   imgSrcs = <any>{};
   imgSrcs_Note = <any>{};
   isEditing_Note = false;
-  inputval=[{display: 'Item0', value: "0"}];
+  curNote=[];
 
   addNoteForm: FormGroup;
   playerid = new FormControl('', Validators.required);
@@ -159,7 +163,6 @@ export class DetailsComponent implements OnInit {
         var arIndex1=this.avBadges.indexOf(iid);
         this.avBadges.splice(arIndex1, 1);
       }    
-      
     }
     removeBadge(badge){
       var arIndex=this.cat.badgestat.indexOf(badge);
@@ -167,15 +170,23 @@ export class DetailsComponent implements OnInit {
         this.cat.badgestat.splice(arIndex, 1);
         this.avBadges.push(badge); 
       }
-      
     }
-    onNoteChange()
+    addMoreBadges(){
+      this.isAddBadges = !this.isAddBadges;
+      if (this.isAddBadges) this.btnBadgeCaption = "Hide Available Badges";
+      else this.btnBadgeCaption = "Add New Badge";
+    }
+    showNewNote(){
+      this.isAddNote = !this.isAddNote;
+      if (this.isAddNote) this.btnNoteCaption = "Cancel";
+      else this.btnNoteCaption = "Add New Note";
+    }
+    saveNewNote(){
+     // this.cat.notestat.push(this.curNote);
+     console.log(this.curNote);
+    }
+    addNewTag(newTag)
     {
-      console.log(this.inputval);
+      this.curNote.push(newTag);
     }
-    public onAdd(item) {
-
-    }
-    
- 
 }

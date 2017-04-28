@@ -5,26 +5,34 @@
   </div>
 </div>
 <br />
-<md-card [style.background]="'lightblue'">
-    <md-grid-list cols="6" rowHeight="50px">
-        <md-grid-tile [colspan]=1 [rowspan]=1>Player ID:</md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="text" name="playerid" [(ngModel)]="cat.playerid" placeholder="Player ID" required></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Player Name:</md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="text" name="playername" [(ngModel)]="cat.playername" placeholder="Player Name" required></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Platform:</md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="text" name="platform" [(ngModel)]="cat.platform" placeholder="Platform"></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Limit: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="text" name="limit" [(ngModel)]="cat.limit" placeholder="Limit"></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Club: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="text" name="club" [(ngModel)]="cat.club" placeholder="Club"></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Club ID: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="text" name="clubid" [(ngModel)]="cat.clubid" placeholder="Club ID"></md-grid-tile>
+<md-card>
+    <md-card-title>Basic Information</md-card-title>
+    <md-grid-list cols="2" rowHeight="70px">
+        <md-grid-tile><md-input-container>
+            <input mdInput class="form-control" type="text" name="playerid" [(ngModel)]="cat.playerid" placeholder="Player ID" required>
+        </md-input-container> </md-grid-tile>
+        <md-grid-tile><md-input-container>
+            <input mdInput class="form-control" type="text" name="playername" [(ngModel)]="cat.playername" placeholder="Player Name" required>
+        </md-input-container></md-grid-tile>
+        <md-grid-tile><md-input-container>
+            <input mdInput class="form-control" type="text" name="platform" [(ngModel)]="cat.platform" placeholder="Platform">
+        </md-input-container></md-grid-tile>
+         <md-grid-tile><md-input-container>
+            <input mdInput class="form-control" type="text" name="limit" [(ngModel)]="cat.limit" placeholder="Limit">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile><md-input-container>
+            <input mdInput class="form-control" type="text" name="club" [(ngModel)]="cat.club" placeholder="Club">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile><md-input-container>
+            <input mdInput class="form-control" type="text" name="clubid" [(ngModel)]="cat.clubid" placeholder="Club ID">
+        </md-input-container></md-grid-tile>
     </md-grid-list>
 </md-card><br />
 <md-card>
-    <md-grid-list cols="6" rowHeight="50px">
-        <md-grid-tile [colspan]=3 [rowspan]=9>
-            <div class="col-sm-12">
+    <md-card-title>Common Stat</md-card-title>
+    <md-grid-list cols="7" rowHeight="70px">
+        <md-grid-tile [colspan]=4 [rowspan]=7>
+            <div class="col-sm-12" style="padding: 10%">
                 <canvas baseChart
                 [datasets]="radarChartData"
                 [labels]="radarChartLabels"
@@ -33,33 +41,80 @@
                 (chartClick)="chartClicked($event)"></canvas>
             </div>
         </md-grid-tile>
-        <md-grid-tile [colspan]=3 [rowspan]=2></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Aggresion: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="number" name="aggresion" [(ngModel)]="cat.aggresion" placeholder="Aggresion"  (change)="updateChart()"> </md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Fundamental: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="number" name="fundamental" [(ngModel)]="cat.fundamental" placeholder="Fundamental" (change)="updateChart()"></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Mindset: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="number" name="mindset" [(ngModel)]="cat.mindset" placeholder="Mindset" (change)="updateChart()"></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Call: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="number" name="call" [(ngModel)]="cat.call" placeholder="Call" (change)="updateChart()"></md-grid-tile>
-        <md-grid-tile [colspan]=1 [rowspan]=1>Bluff: </md-grid-tile>
-        <md-grid-tile [colspan]=2 [rowspan]=1><input class="form-control" type="number" name="bluff" [(ngModel)]="cat.bluff" placeholder="Bluff" (change)="updateChart()"></md-grid-tile>
-        <md-grid-tile [colspan]=3 [rowspan]=2></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1><md-input-container>
+            <input mdInput  class="form-control" type="number" name="aggresion" [(ngModel)]="cat.aggresion" placeholder="Aggresion"  (change)="updateChart()">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1><md-input-container>
+            <input  mdInput class="form-control" type="number" name="fundamental" [(ngModel)]="cat.fundamental" placeholder="Fundamental" (change)="updateChart()">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1><md-input-container>
+            <input  mdInput class="form-control" type="number" name="mindset" [(ngModel)]="cat.mindset" placeholder="Mindset" (change)="updateChart()">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1><md-input-container>
+            <input  mdInput class="form-control" type="number" name="call" [(ngModel)]="cat.call" placeholder="Call" (change)="updateChart()">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1><md-input-container>
+            <input  mdInput class="form-control" type="number" name="bluff" [(ngModel)]="cat.bluff" placeholder="Bluff" (change)="updateChart()">
+        </md-input-container></md-grid-tile>
+        <md-grid-tile [colspan]=3 [rowspan]=1></md-grid-tile>
     </md-grid-list>
 </md-card><br />
 <md-card>
-    <md-grid-list rows="3" cols="4" rowHeight="200px">
-        <md-grid-tile *ngFor="let stat of stats">
-             <md-grid-tile [colspan]=1 [rowspan]=1>1</md-grid-tile>
-             <md-grid-tile [colspan]=1 [rowspan]=1>2</md-grid-tile>
-             <md-grid-tile [colspan]=1 [rowspan]=1>3</md-grid-tile>
-             <md-grid-tile [colspan]=1 [rowspan]=1>4</md-grid-tile>
-                <!--<div style="width:100%"><input class="form-control" type="text" name="statval" [(ngModel)]="cat.rangestat[stat._id]" ></div>
-                <div style="width:100%"><md-slider [thumb-label]="true" [(ngModel)]="cat.rangestat[stat._id]"></md-slider></div>
-                <div style="width:100%"><h3>{{stat.statname}}</h3></div>-->
+    <md-card-title>Range Strengh Gauge</md-card-title>
+    <md-grid-list rows="31" cols="3" rowHeight="80px" *ngFor="let stat of stats">
+             <md-grid-tile>
+                 <md-input-container>
+                     <input mdInput placeholder="{{stat.statname}}" class="form-control" type="text" name="statval" [(ngModel)]="cat.rangestat[stat._id]" >
+                 </md-input-container>
+            </md-grid-tile>
+            <md-grid-tile>
+                <md-slider [thumb-label]="true" [(ngModel)]="cat.rangestat[stat._id]"></md-slider>
+            </md-grid-tile>
+            <md-grid-tile>
+            </md-grid-tile>
+    </md-grid-list>
+</md-card><br />
+<md-card>
+    <md-card-title>Badge</md-card-title>
+    <md-grid-list cols="10" rowHeight="80px">
+        <md-grid-tile *ngFor="let curBadge of cat.badgestat">
+            <img md-card-sm-image  src="{{imgSrcs[curBadge]}}" (click)="removeBadge(curBadge)"/>
+        </md-grid-tile>
+        <md-grid-tile></md-grid-tile>
+    </md-grid-list><br />
+    <md-card-subtitle><button md-raised-button (click)="addMoreBadges()">{{btnBadgeCaption}}</button></md-card-subtitle>
+    <md-grid-list cols="10" rowHeight="80px" *ngIf="isAddBadges"><br />
+        <md-grid-tile *ngFor="let badge of avBadges">
+            <img md-card-sm-image src="{{imgSrcs[badge]}}" (click)="addBadge(badge)"/>
         </md-grid-tile>
     </md-grid-list>
 </md-card><br />
+<md-card>
+    <md-card-title>Note</md-card-title>
+    <md-card-subtitle>
+        <button md-raised-button (click)="saveNewNote()" *ngIf="isAddNote">Save</button>
+        <button md-raised-button (click)="showNewNote()">{{btnNoteCaption}}</button>
+    </md-card-subtitle>
+    
+    <div class="new-note-section" *ngIf="isAddNote">
+        <tag-input [(ngModel)]="curNote" [allowDupes]="true">
+        </tag-input>
+        <md-grid-list cols="10" rowHeight="70px"><br />
+            <md-grid-tile  *ngFor="let note of notes">
+            <button md-button (click)="addNewTag(note.notename)">{{note.notename}}</button>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+
+</md-card><br />
+
+<div *ngFor="let ii of inputval">
+<input [(ngModel)]="ii.value">
+</div>
+<br /><br /><br />
+
+
 
 <!--Start Toast Message-->
   <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)" style="display:inline">
@@ -70,19 +125,6 @@
 <app-toast [message]="toast.message"></app-toast>
 <!--End Toast Message-->
 
-<!--Badge Area-->
-<div *ngFor="let curBadge of cat.badgestat">
-       <button (click)="removeBadge(curBadge)" style="border:red 1px solid">
-           <img width="50px" height="50px" src="{{imgSrcs[curBadge]}}" />
-       </button>
-</div>
-<div *ngFor="let badge of avBadges">
-       <button (click)="addBadge(badge)">
-           <img src="{{imgSrcs[badge]}}" width="50px" height="50px" />
-        </button>
-</div>
-<!--End Badge-->
-<br />
 <!--Note Area-->
 <!--<div class="card" *ngIf="!isEditing">
   <h4 class="card-header">Add New Note</h4>
@@ -95,20 +137,6 @@
       </div>
   </div>
 </div>-->
-
-<tag-input [(ngModel)]="inputval" [allowDupes]="true" (onAdd)="onAdd($event)">
-       <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="[{display: 'Item111', value: 1},{display: 'Item222', value: 2}, {display: 'Item33', value: 3}]">
-       </tag-input-dropdown>
-</tag-input>
-
-<div *ngFor="let ii of inputval">
-<input [(ngModel)]="ii.value">
-</div>
-
-<br />
-<br />
-
-<br />
 <!--End Note-->
 
 
