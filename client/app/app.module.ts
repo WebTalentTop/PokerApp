@@ -15,6 +15,7 @@ import { ChartsModule } from 'ng2-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import {MdSliderModule} from '@angular/material';
+import {MdInputModule} from '@angular/material';
 import { TagInputModule } from 'ng2-tag-input';
 import { GaugeModule } from 'ng-gauge';
 
@@ -34,6 +35,7 @@ import { GaugeModule } from 'ng-gauge';
     AppRoutingModule,
     MaterialModule.forRoot(),
     MdSliderModule,
+    MdInputModule,
     BrowserAnimationsModule,
     GaugeModule,
     SharedModule,
