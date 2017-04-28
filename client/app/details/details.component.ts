@@ -21,13 +21,15 @@ export class DetailsComponent implements OnInit {
   isLoading = true;
   isAddBadges = false;
   isAddNote = false;
+  isEditNote = false;
+  curNote=[];
+  curNoteIndex=0;
   btnBadgeCaption = "Add New Badge";
-  btnNoteCaption = "Add New Note";
   cat = <any>{};
   imgSrcs = <any>{};
   imgSrcs_Note = <any>{};
   isEditing_Note = false;
-  curNote=[];
+  
 
   addNoteForm: FormGroup;
   playerid = new FormControl('', Validators.required);
@@ -46,6 +48,7 @@ export class DetailsComponent implements OnInit {
     this.cat.playerid = this.route.snapshot.paramMap.get('id');
     this.cat.rangestat={};
     this.cat.badgestat=[];
+    this.cat.notestat=[];
   
   }
 
@@ -178,15 +181,40 @@ export class DetailsComponent implements OnInit {
     }
     showNewNote(){
       this.isAddNote = !this.isAddNote;
-      if (this.isAddNote) this.btnNoteCaption = "Cancel";
-      else this.btnNoteCaption = "Add New Note";
+      if (this.isAddNote) {
+        this.curNote=[];
+      }
+    }
+    clearNote(){
+      this.curNote=[];
+    }
+    cancelNote(){
+      this.isAddNote = false;
+      this.isEditNote = false;
+      this.curNote=[];
     }
     saveNewNote(){
-     // this.cat.notestat.push(this.curNote);
-     console.log(this.curNote);
+      if (this.curNote.length>0)
+        this.cat.notestat.push(this.curNote);
+      this.curNote=[];
+    }
+    updateNote()
+    {
+      if (this.curNote.length>0)
+       this.cat.notestat[this.curNoteIndex]=this.curNote;
+    }
+    editNote(index)
+    {
+      this.curNoteIndex = index;
+      this.isEditNote = true;
+      this.curNote=this.cat.notestat[index];
+    }
+    removeNote(index)
+    {
+      this.cat.notestat.splice(index,1);
     }
     addNewTag(newTag)
     {
-      this.curNote.push(newTag);
+      this.curNote.push({display:newTag, value:newTag});
     }
 }

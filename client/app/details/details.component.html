@@ -77,14 +77,14 @@
 </md-card><br />
 <md-card>
     <md-card-title>Badge</md-card-title>
-    <md-grid-list cols="10" rowHeight="80px">
+    <md-grid-list cols="10" rowHeight="100px">
         <md-grid-tile *ngFor="let curBadge of cat.badgestat">
             <img md-card-sm-image  src="{{imgSrcs[curBadge]}}" (click)="removeBadge(curBadge)"/>
         </md-grid-tile>
         <md-grid-tile></md-grid-tile>
     </md-grid-list><br />
     <md-card-subtitle><button md-raised-button (click)="addMoreBadges()">{{btnBadgeCaption}}</button></md-card-subtitle>
-    <md-grid-list cols="10" rowHeight="80px" *ngIf="isAddBadges"><br />
+    <md-grid-list cols="10" rowHeight="100px" *ngIf="isAddBadges"><br />
         <md-grid-tile *ngFor="let badge of avBadges">
             <img md-card-sm-image src="{{imgSrcs[badge]}}" (click)="addBadge(badge)"/>
         </md-grid-tile>
@@ -92,12 +92,27 @@
 </md-card><br />
 <md-card>
     <md-card-title>Note</md-card-title>
+    <table width="100%">
+    <tr  *ngFor="let sngNote of cat.notestat; let i=index">
+        <td><label *ngFor="let sngTag of sngNote">
+        &nbsp;{{sngTag.value}} 
+        </label></td>
+        <td>
+        <button md-raised-button (click)="editNote(i)" *ngIf="!isAddNote && !isEditNote">Edit</button>
+        <button md-raised-button (click)="removeNote(i)" *ngIf="!isAddNote && !isEditNote">Remove</button>
+        </td>
+    </tr>
+    </table>
+    <br />
     <md-card-subtitle>
-        <button md-raised-button (click)="saveNewNote()" *ngIf="isAddNote">Save</button>
-        <button md-raised-button (click)="showNewNote()">{{btnNoteCaption}}</button>
+        <button md-raised-button (click)="saveNewNote()" *ngIf="isAddNote">Add New</button>
+        <button md-raised-button (click)="updateNote()" *ngIf="isEditNote">Update</button>
+        <button md-raised-button (click)="clearNote()" *ngIf="isAddNote || isEditNote">Clear All</button>
+        <button md-raised-button (click)="cancelNote()" *ngIf="isAddNote || isEditNote">Cancel</button>
+        <button md-raised-button (click)="showNewNote()" *ngIf="!isAddNote && !isEditNote">Add New Note</button>
     </md-card-subtitle>
     
-    <div class="new-note-section" *ngIf="isAddNote">
+    <div class="note-section" *ngIf="isAddNote || isEditNote">
         <tag-input [(ngModel)]="curNote" [allowDupes]="true">
         </tag-input>
         <md-grid-list cols="10" rowHeight="70px"><br />
@@ -109,34 +124,15 @@
 
 </md-card><br />
 
-<div *ngFor="let ii of inputval">
-<input [(ngModel)]="ii.value">
-</div>
-<br /><br /><br />
-
-
-
 <!--Start Toast Message-->
-  <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)" style="display:inline">
-     <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+  <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)">
+     <button md-raised-button type="submit" [disabled]="!form.form.valid" style="float:right"><i class="fa fa-floppy-o"></i> Save</button>
   </form>
 <!--End Toast Message-->
 <!--Start Toast Message-->
 <app-toast [message]="toast.message"></app-toast>
 <!--End Toast Message-->
+<br /><br /><br /><br /><br />
 
-<!--Note Area-->
-<!--<div class="card" *ngIf="!isEditing">
-  <h4 class="card-header">Add New Note</h4>
-  <div class="card-block">
-      <div *ngFor="let note of notes">
-        <button (click)="addNote(note)">
-           <label *ngIf="note.imgurl.length==0">{{note.notename}}</label>
-           <img *ngIf="note.imgurl.length!=0" src="{{imgSrcs_Note[note]}}" width="50px" height="50px" />
-        </button>
-      </div>
-  </div>
-</div>-->
-<!--End Note-->
 
 
