@@ -20,7 +20,7 @@ export class NoteComponent implements OnInit {
 
   addNoteForm: FormGroup;
   notename = new FormControl('', Validators.required);
-  imgurl = new FormControl('', Validators.required);
+  imgurl = new FormControl();
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
