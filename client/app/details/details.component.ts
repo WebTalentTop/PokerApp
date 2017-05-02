@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -43,8 +43,10 @@ export class DetailsComponent implements OnInit {
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
+              private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder) {     
+    if (localStorage.getItem('userid')==null) this.router.navigate(['/login']);
     this.cat.playerid = this.route.snapshot.paramMap.get('id');
     this.cat.rangestat={};
     this.cat.badgestat=[];
@@ -52,8 +54,8 @@ export class DetailsComponent implements OnInit {
   
   }
 
-  ngOnInit() {
-     
+  ngOnInit() { 
+    
     this.getStats();
     this.getBadges();
     this.getNotes();

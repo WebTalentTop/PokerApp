@@ -24,8 +24,14 @@ export class DataService {
   getNotes(): Observable<any> {
     return this.http.get('/api/notes').map(res => res.json());
   }
+  getUsers(): Observable<any> {
+    return this.http.get('/api/users').map(res => res.json());
+  }
   countCats(): Observable<any> {
     return this.http.get('/api/players/count').map(res => res.json());
+  }
+  countUsers(): Observable<any> {
+    return this.http.get('/api/users/count').map(res => res.json());
   }
   countStats(): Observable<any> {
     return this.http.get('/api/stats/count').map(res => res.json());
@@ -39,6 +45,9 @@ export class DataService {
   addCat(cat): Observable<any> {
     return this.http.post('/api/player', JSON.stringify(cat), this.options);
   }
+  addUser(user): Observable<any> {
+    return this.http.post('/api/user', JSON.stringify(user), this.options);
+  }
   addStat(stat): Observable<any> {
     return this.http.post('/api/stat', JSON.stringify(stat), this.options);
   }
@@ -50,6 +59,9 @@ export class DataService {
   }
   getCat(cat): Observable<any> {
     return this.http.get(`/api/player/${cat.playerid}`).map(res => res.json());
+  }
+  getUser(user): Observable<any> {
+    return this.http.get(`/api/user/${user.username}/${user.password}`).map(res => res.json());
   }
   getStat(stat): Observable<any> {
     return this.http.get(`/api/stat/${stat._id}`).map(res => res.json());
@@ -72,6 +84,9 @@ export class DataService {
   editNote(note): Observable<any> {
     return this.http.put(`/api/note/${note._id}`, JSON.stringify(note), this.options);
   }
+  editUser(user): Observable<any> {
+    return this.http.put(`/api/user/${user._id}`, JSON.stringify(user), this.options);
+  }
   deleteCat(cat): Observable<any> {
     return this.http.delete(`/api/player/${cat._id}`, this.options);
   }
@@ -83,5 +98,8 @@ export class DataService {
   }
   deleteNote(note): Observable<any> {
     return this.http.delete(`/api/note/${note._id}`, this.options);
+  }
+  deleteUser(user): Observable<any> {
+    return this.http.delete(`/api/user/${user._id}`, this.options);
   }
 }

@@ -35,6 +35,14 @@ abstract class BaseCtrl {
       res.json(obj);
     });
   };
+
+  getuser = (req, res) => {
+    this.model.findOne({ username: req.params.username, password: req.params.password}, (err, obj) => {
+      console.log(req.params);
+      if (err) { return console.error(err); }
+      res.json(obj);
+    });
+  };
   // Get by id
   get = (req, res) => {
     this.model.findOne({ _id: req.params.id }, (err, obj) => {

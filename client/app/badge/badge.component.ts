@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 import { DataService } from '../services/data.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-badge',
   templateUrl: './badge.component.html',
@@ -23,8 +23,11 @@ export class BadgeComponent implements OnInit {
   imgurl = new FormControl('', Validators.required);
   constructor(private http: Http,
               private dataService: DataService,
+              private router: Router,
               public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+                if (localStorage.getItem('userid')==null) this.router.navigate(['/login']);
+               }
 
   ngOnInit() {
     this.getBadges();

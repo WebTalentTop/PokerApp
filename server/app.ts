@@ -9,6 +9,7 @@ import Cat from './models/cat.model';
 import Stat from './models/stat.model';
 import Badge from './models/badge.model';
 import Note from './models/note.model';
+import User from './models/user.model';
 import setRoutes from './routes';
 
 const app = express();

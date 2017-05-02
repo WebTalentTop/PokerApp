@@ -10,6 +10,8 @@ import BadgesCtrl from './controllers/badges';
 import Badge from './models/badge.model';
 import NotesCtrl from './controllers/notes';
 import Note from './models/note.model';
+import UsersCtrl from './controllers/users';
+import User from './models/user.model';
 export default function setRoutes(app) {
 
 
@@ -48,5 +50,14 @@ export default function setRoutes(app) {
   app.route('/api/note/:id').get(notes.get);
   app.route('/api/note/:id').put(notes.update);
   app.route('/api/note/:id').delete(notes.delete);
+
+   const users = new UsersCtrl();
+
+  app.route('/api/users').get(users.getAll);
+  app.route('/api/users/count').get(users.count);
+  app.route('/api/user').post(users.insert);
+  app.route('/api/user/:username/:password').get(users.getuser);
+  app.route('/api/user/:id').put(users.update);
+  app.route('/api/user/:id').delete(users.delete);
 
 }

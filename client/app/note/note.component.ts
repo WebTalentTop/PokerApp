@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 import { DataService } from '../services/data.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -23,8 +23,11 @@ export class NoteComponent implements OnInit {
   imgurl = new FormControl();
   constructor(private http: Http,
               private dataService: DataService,
+              private router: Router,
               public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+                if (localStorage.getItem('userid')==null) this.router.navigate(['/login']);
+               }
 
   ngOnInit() {
     this.getNotes();

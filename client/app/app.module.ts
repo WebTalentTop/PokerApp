@@ -9,6 +9,8 @@ import { DetailsComponent } from './details/details.component';
 import { StatComponent } from './stat/stat.component';
 import { BadgeComponent } from './badge/badge.component';
 import { NoteComponent } from './note/note.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { DataService } from './services/data.service';
 import { ChartsModule } from 'ng2-charts';
@@ -27,6 +29,8 @@ import { GaugeModule } from 'ng-gauge';
     StatComponent,
     BadgeComponent,
     NoteComponent,
+    LoginComponent,
+    RegisterComponent,
     AboutComponent
   ],
   imports: [
