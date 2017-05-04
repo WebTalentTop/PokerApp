@@ -1,0 +1,68 @@
+
+<div class="card">
+  <h4 class="card-header">Register Form</h4>
+  <div class="card-block">
+    <form class="form-inline" [formGroup]="addRegisterForm" (ngSubmit)="RegisterSubmit()" style="text-align:center">
+      <table>
+        <tr>
+          <td><label>First Name: </label></td>
+          <td colspan="2">
+            <div class="form-group">
+                <input class="form-control" type="text" name="firstname" formControlName="firstname" placeholder="First Name">
+            </div>
+          </td>
+       </tr>
+       <tr>
+          <td><label>Last Name: </label></td>
+          <td colspan="2">
+            <div class="form-group">
+                <input class="form-control" type="text" name="lastname" formControlName="lastname" placeholder="Last Name">
+            </div>
+          </td>
+       </tr>
+       <tr>
+          <td><label>UserName: </label></td>
+          <td colspan="2">
+            <div class="form-group">
+              <input class="form-control" type="username" name="username" formControlName="username" placeholder="Username">
+            </div>
+          </td>
+       </tr>
+       <tr>
+          <td><label>Email: </label></td>
+          <td colspan="2">
+            <div class="form-group">
+              <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email">
+            </div>
+          </td>
+       </tr>
+       <tr>
+          <td><label>Password: </label></td>
+          <td colspan="2">
+             <div class="form-group">
+              <input class="form-control" type="password" name="password" formControlName="password" placeholder="Password">
+            </div>
+          </td>
+       </tr>
+       <tr>
+          <td><label>RePassword: </label></td>
+          <td colspan="2">
+            <div class="form-group">
+                <input class="form-control" type="password" name="repassword" formControlName="repassword" placeholder="Retype Password">
+            </div>
+          </td>
+       </tr>
+       <tr>
+         <td></td>
+         <td>
+             <button class="btn btn-primary" type="submit" [disabled]="!addRegisterForm.valid"><i class="fa fa-user-o"></i> Register</button>
+         </td>
+         <td>
+           <a [routerLink]="['/login']" class="btn btn-primary" ><i class="fa fa-close"></i> Cancel</a>
+         </td>
+       </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<app-toast [message]="toast.message"></app-toast>

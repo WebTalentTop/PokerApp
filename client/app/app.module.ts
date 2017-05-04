@@ -10,6 +10,7 @@ import { StatComponent } from './stat/stat.component';
 import { BadgeComponent } from './badge/badge.component';
 import { NoteComponent } from './note/note.component';
 import { LoginComponent } from './login/login.component';
+import { LivestComponent } from './livest/livest.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { DataService } from './services/data.service';
@@ -31,6 +32,7 @@ import { GaugeModule } from 'ng-gauge';
     NoteComponent,
     LoginComponent,
     RegisterComponent,
+    LivestComponent,
     AboutComponent
   ],
   imports: [

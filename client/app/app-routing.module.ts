@@ -9,6 +9,7 @@ import { BadgeComponent } from './badge/badge.component';
 import { NoteComponent } from './note/note.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LivestComponent } from './livest/livest.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'details/:id', component: DetailsComponent },
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'note', component: NoteComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'lst', component: LivestComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
